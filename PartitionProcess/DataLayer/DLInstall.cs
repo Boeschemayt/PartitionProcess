@@ -17,8 +17,9 @@ namespace PartitionProcess.DataLayer
             _ConnectionString = ConnectionString;
         }
 
-        public void CreateTabularPartitionConfig() {
+        public string CreateTabularPartitionConfig() {
             SqlConnection conn = new SqlConnection(_ConnectionString);
+            string returnText = "";
 
             string query = "CREATE TABLE [partitioning].[Tabular_Partition_Config]( " +
                             "[Tabular_Partition_Config_Id][int] IDENTITY(1, 1) NOT NULL," +
@@ -36,14 +37,29 @@ namespace PartitionProcess.DataLayer
                             "[Partitions_End_Date] [date] NULL," +
                             "[Process_Grain] [int] NULL" +
                             ")";
-                            
-            using (SqlCommand cmd = new SqlCommand(query, conn)) {
 
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
 
-            };
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                };
+            }
+            catch (SqlException e)
+            {
+                returnText = "Table TabularPartitionConfig was not installed.. " + e.ToString();
+                throw new Exception(e.ToString());
+            }
+
+            returnText = "Table TabularPartitionConfig was successfully installed.";
+            return returnText;
+            
         }
+
+        
     }
 }
