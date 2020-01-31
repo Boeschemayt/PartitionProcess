@@ -42,6 +42,7 @@ namespace PartitionProcess.DataLayer
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
+
             };
         }
     }
