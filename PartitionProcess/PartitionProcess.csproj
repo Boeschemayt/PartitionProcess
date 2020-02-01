@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Scripts\SQL Create scripts\Create_Datum.sql" />
     <Content Include="Scripts\SQL Create scripts\Create_Procedure_InsertTabularPartitionsExisting.sql" />
     <Content Include="Scripts\SQL Create scripts\Create_Procedure_InsertTabularPartitionsRequired.sql" />
     <Content Include="Scripts\SQL Create scripts\Create_Procedure_TruncateTabularPartititionsTables.sql" />

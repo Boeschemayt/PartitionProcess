@@ -6,4 +6,3 @@ CREATE TABLE [partitioning].[Tabular_Partitions_Existing](
 	[Partition_RefreshedTime] [datetime] NULL,
 	[Partition_State] [varchar](100) NULL
 ) ON [PRIMARY]
-GO

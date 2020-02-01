@@ -10,4 +10,3 @@ CREATE TABLE [partitioning].[Tabular_Partitions_Required](
 	[Start_Process] [datetime] NULL,
 	[End_Process] [datetime] NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
