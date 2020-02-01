@@ -34,4 +34,3 @@ AS
 				ROLLBACK TRAN;
 			THROW; 
 		END CATCH;
-GO

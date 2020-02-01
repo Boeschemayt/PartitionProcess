@@ -22,7 +22,7 @@ namespace PartitionProcess
         {
             DLInstall d = new DLInstall();
 
-            d.CreateTabularPartitionDatum();
+            d.CreateProcedureUpdateTabularPartitionsRequiredProcessState();
         }
     }
 }

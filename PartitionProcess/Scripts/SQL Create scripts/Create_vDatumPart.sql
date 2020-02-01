@@ -42,4 +42,4 @@ SELECT [DateKey]
 	  ,[MonthNO]						AS [Löpnummer månad]
 	  ,[CurrentMonthNO]					AS [Löpnummer månad aktuell]
 
-FROM [gem_dim].[Datum]
+FROM [Partitioning].[Datum]
