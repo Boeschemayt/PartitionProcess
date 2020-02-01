@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.IO;
+using System.Reflection;
 
 namespace PartitionProcess.DataLayer
 {
@@ -16,28 +18,19 @@ namespace PartitionProcess.DataLayer
 
             _ConnectionString = ConnectionString;
         }
+        public DLInstall() {
+            _ConnectionString = "Data Source=DESKTOP-PIPOOQN\\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=Mart";
+        }
 
         public string CreateTabularPartitionConfig() {
             SqlConnection conn = new SqlConnection(_ConnectionString);
             string returnText = "";
+            string fileName = "Create_Tabular_Partition_Config.sql";
 
-            string query = "CREATE TABLE [partitioning].[Tabular_Partition_Config]( " +
-                            "[Tabular_Partition_Config_Id][int] IDENTITY(1, 1) NOT NULL," +
-                            "[Tabular_Database_Name] [varchar] (100) NULL," +
-                            "[Table_Name] [varchar] (100) NULL," +
-                            "[Partition_Name_Prefix] [varchar] (100) NULL," +
-                            "[Partitioning_Column] [varchar] (100) NULL," +
-                            "[Source_Object] [varchar] (100) NULL," +
-                            "[Stage_Table] [varchar] (100) NULL," +
-                            "[Stage_Column] [varchar] (100) NULL," +
-                            "[Partition_Grain] [varchar] (100) NULL," +
-                            "[Partitions_Start_Date_SK] [int] NULL," +
-                            "[Partitions_End_Date_SK] [int] NULL," +
-                            "[Partitions_Start_Date] [date] NULL," +
-                            "[Partitions_End_Date] [date] NULL," +
-                            "[Process_Grain] [int] NULL" +
-                            ")";
+            string dir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName.ToString();
+            var query = File.ReadAllText(dir + @"\Scripts\SQL Create scripts\" +fileName);
 
+            
             try
             {
                 using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -52,7 +45,7 @@ namespace PartitionProcess.DataLayer
             catch (SqlException e)
             {
                 returnText = "Table TabularPartitionConfig was not installed.. " + e.ToString();
-                throw new Exception(e.ToString());
+                throw new Exception(e.ToString()); //debug
             }
 
             returnText = "Table TabularPartitionConfig was successfully installed.";

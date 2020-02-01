@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PartitionProcess.DataLayer;
 
 namespace PartitionProcess
 {
@@ -15,6 +16,13 @@ namespace PartitionProcess
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DLInstall d = new DLInstall();
+
+            d.CreateTabularPartitionConfig();
         }
     }
 }

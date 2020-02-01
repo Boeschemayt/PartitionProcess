@@ -56,6 +56,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -78,8 +81,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Scripts\SQL Create scripts\" />
+    <Content Include="Scripts\SQL Create scripts\Create_Procedure_InsertTabularPartitionsExisting.sql" />
+    <Content Include="Scripts\SQL Create scripts\Create_Procedure_InsertTabularPartitionsRequired.sql" />
+    <Content Include="Scripts\SQL Create scripts\Create_Procedure_TruncateTabularPartititionsTables.sql" />
+    <Content Include="Scripts\SQL Create scripts\Create_Procedure_UpdateTabularPartitionsRequiredProcessState.sql" />
+    <Content Include="Scripts\SQL Create scripts\Create_Tabular_Partitions_Required.sql" />
+    <Content Include="Scripts\SQL Create scripts\Create_Tabular_Partition_Config.sql" />
+    <Content Include="Scripts\SQL Create scripts\Create_Tabular_Partition_Existing.sql" />
+    <Content Include="Scripts\SQL Create scripts\Create_Tabular_Partition_Grain_Mapping.sql" />
+    <Content Include="Scripts\SQL Create scripts\Create_vDatumPart.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
