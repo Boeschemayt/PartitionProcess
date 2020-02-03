@@ -20,9 +20,9 @@ namespace PartitionProcess
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DLInstall d = new DLInstall();
+            Dal d = new Dal();
 
-            d.CreateProcedureUpdateTabularPartitionsRequiredProcessState();
+            d.FullInstall();
         }
     }
 }
